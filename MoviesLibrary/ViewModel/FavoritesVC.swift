@@ -55,30 +55,39 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+    //MARK: - create and fill selected favorite movie view
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let favoriteMovieVC = FavoriteMovieVC()
-        let imageLink = "https://image.tmdb.org/t/p/w185" + ListVC.favoritesMoviesArray[indexPath.row].poster_path
-        let url = URL(string: imageLink)!
+        let selectedFavoriteMovie = ListVC.favoritesMoviesArray[indexPath.row]
+        
+        let imageLink = "https://image.tmdb.org/t/p/w185" + selectedFavoriteMovie.poster_path
+        guard let url = URL(string: imageLink) else { return }
         if let data = try? Data(contentsOf: url) {
             favoriteMovieVC.movieImage.image = UIImage(data: data)
         }
-        favoriteMovieVC.title = ListVC.favoritesMoviesArray[indexPath.row].title
-        let idGenres = ListVC.favoritesMoviesArray[indexPath.row].genre_ids
+        
+        favoriteMovieVC.title = selectedFavoriteMovie.title
+        let idGenres = selectedFavoriteMovie.genre_ids
         var stringGenres = [String]()
         for id in idGenres{
             stringGenres.append(ListVC.genresDictionary[id] ?? "")
         }
+        
         favoriteMovieVC.genresLabel.text = "Genre: " + "\(stringGenres.joined(separator: ", "))"
-        favoriteMovieVC.ratingLabel.text = "Rating: " + String(ListVC.favoritesMoviesArray[indexPath.row].vote_average) + " out of " + String(ListVC.favoritesMoviesArray[indexPath.row].vote_count) + " voters"
-        favoriteMovieVC.releaseDateLabel.text = "Realease date: " + (ListVC.favoritesMoviesArray[indexPath.row].release_date)
-        favoriteMovieVC.descriptionTV.text = ListVC.favoritesMoviesArray[indexPath.row].overview
+        favoriteMovieVC.ratingLabel.text = "Rating: " + String(selectedFavoriteMovie.vote_average) + " out of " + String(selectedFavoriteMovie.vote_count) + " voters"
+        favoriteMovieVC.releaseDateLabel.text = "Realease date: " + (selectedFavoriteMovie.release_date)
+        favoriteMovieVC.descriptionTV.text = selectedFavoriteMovie.overview
+        
         navigationController?.pushViewController(favoriteMovieVC, animated: true)
     }
     
+    //MARK: - delete movie from favorites movies list
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ListVC.favoritesMoviesArray.remove(at: indexPath.row)//
+            ListVC.favoritesMoviesArray.remove(at: indexPath.row)
             ListVC.uniqueFavoriteMoviesArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

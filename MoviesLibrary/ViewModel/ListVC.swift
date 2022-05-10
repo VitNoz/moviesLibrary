@@ -63,27 +63,33 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGe
             return cell
         }
     
+    //MARK: - create and fill selected movie view
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let movieVC = MovieVC()
-        let imageLink = "https://image.tmdb.org/t/p/w185" + moviesArray[indexPath.row].poster_path
-        let url = URL(string: imageLink)!
+        let selectedMovie = moviesArray[indexPath.row]
+        
+        let imageLink = "https://image.tmdb.org/t/p/w185" + selectedMovie.poster_path
+        guard let url = URL(string: imageLink) else { return }
         if let data = try? Data(contentsOf: url) {
             movieVC.movieImage.image = UIImage(data: data)
         }
-        movieVC.title = moviesArray[indexPath.row].title
-        movieVC.yearLabel.text = "Realease year: " + (moviesArray[indexPath.row].release_date).prefix(4)
-        movieVC.descriptionTV.text = moviesArray[indexPath.row].overview
+        
+        movieVC.title = selectedMovie.title
+        movieVC.yearLabel.text = "Realease year: " + (selectedMovie.release_date).prefix(4)
+        movieVC.descriptionTV.text = selectedMovie.overview
         navigationController?.pushViewController(movieVC, animated: true)
     }
+    
+    //MARK: - add movie to favorrites by long press on cell
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
             let touchCell = longPressGestureRecognizer.location(in: self.tableView)
             if let indexPath = tableView.indexPathForRow(at: touchCell) {
                 if ListVC.uniqueFavoriteMoviesArray.contains(indexPath.row) { return }
-                //delegate?.addFavoriteMovie(favoriteMovie: moviesArray[indexPath.row])
-                ListVC.favoritesMoviesArray.append(moviesArray[indexPath.row]) //work without delegate
+                ListVC.favoritesMoviesArray.append(moviesArray[indexPath.row])
                 ListVC.uniqueFavoriteMoviesArray.append(indexPath.row)
             }
         }

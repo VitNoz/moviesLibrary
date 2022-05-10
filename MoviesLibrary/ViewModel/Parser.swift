@@ -9,6 +9,8 @@ import Foundation
 
 extension ListVC {
     
+    // MARK: - get movies list from api
+    
     func getMovies() {
         
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=184e75efa627664fffa178dd48fec464&language=en-US&page=1") else { return }
@@ -26,7 +28,6 @@ extension ListVC {
                     let parseMovies = try JSONDecoder().decode(Movies.self, from: data)
                     self.moviesArray = parseMovies.results
                     self.tableView.reloadData()
-                    //print(parseMovies)
                 } catch {
                     print(error)
                 }
@@ -34,6 +35,8 @@ extension ListVC {
         }.resume()
     }
 
+    // MARK: - get genres list from api and convert it to dictionary
+    
         func getGenres() {
             
             guard let url = URL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=184e75efa627664fffa178dd48fec464&language=en-US") else { return }
@@ -56,7 +59,7 @@ extension ListVC {
                                     ListVC.genresDictionary.updateValue("\(genre.name)", forKey: genre.id)
                                 }
                             return ListVC.genresDictionary
-                            }
+                        }
                     } catch {
                         print(error)
                     }
