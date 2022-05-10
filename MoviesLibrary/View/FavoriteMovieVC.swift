@@ -26,14 +26,6 @@ class FavoriteMovieVC: UIViewController {
         return label
     }()
     
-//    let genresLabel: UITextView = {
-//        let label = UITextView()
-//        label.font = UIFont.systemFont(ofSize: 18)
-//        label.textAlignment = .left
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-    
     let ratingLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)

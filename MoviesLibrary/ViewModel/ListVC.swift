@@ -9,8 +9,6 @@ import UIKit
 
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
-    //weak var delegate: FillFavoritesMoviesArrayDelegate?
-    
     var moviesArray = [Movie]()
     var genresArray = [Genre]()
     static var genresDictionary = [Int:String]()
@@ -39,10 +37,6 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGe
         longPressRecognizer.delaysTouchesBegan = true
         tableView.addGestureRecognizer(longPressRecognizer)
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        makeGenresDictionary()
-//    }
     
     func setupTableView() {
         tableView.delegate = self
@@ -94,12 +88,5 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGe
             }
         }
     }
-    
-//    func makeGenresDictionary () {
-//            for genre in self.genresArray {
-//                self.genresDictionary.updateValue("\(genre.name)", forKey: genre.id)
-//            }
-//            print(self.genresDictionary)
-//        }
 }
 

@@ -9,8 +9,6 @@ import UIKit
 
 class MovieVC: UIViewController {
     
-    //4var movie: Movie?
-    
     let movieImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .green
@@ -46,8 +44,6 @@ class MovieVC: UIViewController {
     }
     
     func setConstraints () {
-        
-        // MARK: - Add constraints for horizontal orientation
         
         view.addSubview(movieImage)
         NSLayoutConstraint.activate([

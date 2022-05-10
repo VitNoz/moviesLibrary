@@ -21,7 +21,6 @@
 		662EAC152825B30A00784524 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662EAC142825B30A00784524 /* FavoritesVC.swift */; };
 		6677D1D02829336B00BC003D /* FavoriteMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677D1CE2829336B00BC003D /* FavoriteMovieTableViewCell.swift */; };
 		6677D1D12829336B00BC003D /* FavoriteMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6677D1CF2829336B00BC003D /* FavoriteMovieTableViewCell.xib */; };
-		668A8B1228281C0200A6D01D /* FillFavoritesMoviesArrayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668A8B1128281C0200A6D01D /* FillFavoritesMoviesArrayDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		662EAC142825B30A00784524 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		6677D1CE2829336B00BC003D /* FavoriteMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieTableViewCell.swift; sourceTree = "<group>"; };
 		6677D1CF2829336B00BC003D /* FavoriteMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteMovieTableViewCell.xib; sourceTree = "<group>"; };
-		668A8B1128281C0200A6D01D /* FillFavoritesMoviesArrayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFavoritesMoviesArrayDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +127,6 @@
 				662EAC142825B30A00784524 /* FavoritesVC.swift */,
 				6677D1CE2829336B00BC003D /* FavoriteMovieTableViewCell.swift */,
 				6677D1CF2829336B00BC003D /* FavoriteMovieTableViewCell.xib */,
-				668A8B1128281C0200A6D01D /* FillFavoritesMoviesArrayDelegate.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,7 +208,6 @@
 				662E03672826801700465E53 /* MovieVC.swift in Sources */,
 				662E035D2825DA5A00465E53 /* ListVC.swift in Sources */,
 				662E0363282674DF00465E53 /* Movies.swift in Sources */,
-				668A8B1228281C0200A6D01D /* FillFavoritesMoviesArrayDelegate.swift in Sources */,
 				662EABFF2825AEB700784524 /* AppDelegate.swift in Sources */,
 				662EAC152825B30A00784524 /* FavoritesVC.swift in Sources */,
 				662EAC012825AEB700784524 /* SceneDelegate.swift in Sources */,

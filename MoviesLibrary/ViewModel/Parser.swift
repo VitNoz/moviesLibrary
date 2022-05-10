@@ -57,7 +57,6 @@ extension ListVC {
                                 }
                             return ListVC.genresDictionary
                             }
-                        //print(ListVC.genresDictionary)
                     } catch {
                         print(error)
                     }

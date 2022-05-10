@@ -7,15 +7,7 @@
 
 import UIKit
 
-class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
-//, FillFavoritesMoviesArrayDelegate
-{
-    
-//    var favoritesMovies: [Movie] = []
-//
-//    func addFavoriteMovie(favoriteMovie: Movie) {
-//        favoritesMovies.append(favoriteMovie)
-//    }
+class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     let favoritesTableView: UITableView = {
             let tv = UITableView()
@@ -27,8 +19,6 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
     
-//        let movieList = ListVC()
-//        movieList.delegate = self
         title = "Favorites"
         setupFavoriteTableView()
     }
@@ -54,7 +44,7 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        ListVC.favoritesMoviesArray.count //
+        ListVC.favoritesMoviesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,16 +63,13 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let data = try? Data(contentsOf: url) {
             favoriteMovieVC.movieImage.image = UIImage(data: data)
         }
-        favoriteMovieVC.title = ListVC.favoritesMoviesArray[indexPath.row].title //
+        favoriteMovieVC.title = ListVC.favoritesMoviesArray[indexPath.row].title
         let idGenres = ListVC.favoritesMoviesArray[indexPath.row].genre_ids
-        //let stringGenre = ListVC.genresDictionary[id]
-        //favoriteMovieVC.genresLabel.text = "Genre: " + "\(ListVC.favoritesMoviesArray[indexPath.row].genre_ids)"
         var stringGenres = [String]()
         for id in idGenres{
             stringGenres.append(ListVC.genresDictionary[id] ?? "")
         }
         favoriteMovieVC.genresLabel.text = "Genre: " + "\(stringGenres.joined(separator: ", "))"
-        // add string genre
         favoriteMovieVC.ratingLabel.text = "Rating: " + String(ListVC.favoritesMoviesArray[indexPath.row].vote_average) + " out of " + String(ListVC.favoritesMoviesArray[indexPath.row].vote_count) + " voters"
         favoriteMovieVC.releaseDateLabel.text = "Realease date: " + (ListVC.favoritesMoviesArray[indexPath.row].release_date)
         favoriteMovieVC.descriptionTV.text = ListVC.favoritesMoviesArray[indexPath.row].overview
@@ -96,12 +83,4 @@ class FavoritesVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-//    
-//    func convertGenre(genreid: [Int]) -> [String] {
-//        var genresString = [String]()
-//        for gid in genreid {
-//            
-//        }
-//        return genresString
-//    }
 }
