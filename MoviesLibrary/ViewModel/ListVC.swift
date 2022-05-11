@@ -82,7 +82,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGe
         navigationController?.pushViewController(movieVC, animated: true)
     }
     
-    //MARK: - add movie to favorrites by long press on table cell
+    //MARK: - add movie to favorrites by long press on cell
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
